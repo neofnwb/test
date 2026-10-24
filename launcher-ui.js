@@ -84,4 +84,52 @@ document.addEventListener("DOMContentLoaded", () => {
     updateReviews();
     new MutationObserver(updateReviews).observe(reviewList, { childList: true });
   }
+
+  const lobbies = document.querySelector("#lobbies-title")?.closest(".chapter");
+  if (lobbies && !document.querySelector("#og-multiplayer-title")) {
+    lobbies.insertAdjacentHTML("afterend", `
+      <section class="chapter" aria-labelledby="og-multiplayer-title">
+        <figure class="float" data-float data-par="-46">
+          <img src="./assets/story/og_landscape.jpeg" alt="A classic Fortnite landscape from Project Neo" width="1920" height="1080" loading="lazy" decoding="async">
+        </figure>
+        <div class="chapter-copy" data-in-group data-par="30">
+          <h2 class="chapter-title" id="og-multiplayer-title">OG Fortnite multiplayer</h2>
+          <p>Drop back into classic Fortnite with the Project Neo launcher. Choose a season and join the action with friends.</p>
+          <p>Revisit the maps, weapons, and familiar multiplayer feel of Fortnite's early seasons.</p>
+          <a class="ink-link" href="https://projectneofn.dev/download" target="_blank" rel="noopener noreferrer">Download Project Neo</a>
+        </div>
+      </section>
+    `);
+  }
+
+  const reviewsSection = document.querySelector("#creators-title")?.closest(".creators-block");
+  if (reviewsSection && !document.querySelector("#faq-title")) {
+    const faqs = [
+      ["What is Project Neo?", "Project Neo is a launcher for revisiting classic Fortnite seasons and multiplayer."],
+      ["How do I get started?", "Download the launcher for Windows, open it, and follow its setup instructions."],
+      ["Which seasons are available?", "The launcher shows the seasons currently available to play."],
+      ["Can I play with friends?", "Yes. Join a supported multiplayer session and invite friends to play together."],
+      ["Do I need to pay to use Neo?", "Neo is free to download and use."],
+      ["Where can I get help?", "Visit the Project Neo Discord community for support and updates."],
+    ];
+    const section = document.createElement("section");
+    section.className = "faq-block";
+    section.setAttribute("aria-labelledby", "faq-title");
+    section.innerHTML = `
+      <h2 class="chapter-title creators-title" id="faq-title">Frequently Asked Questions</h2>
+      <ul class="faq-list">${faqs.map(([question, answer]) => `
+        <li class="creator faq-item" data-edge data-edge-inset="0" data-edge-stroke="2" data-edge-glow="0.25">
+          <details class="faq-card">
+            <summary class="faq-question"><span>${question}</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
+            <p class="faq-answer">${answer}</p>
+            <span class="creator-glass neo-glass" aria-hidden="true"></span>
+          </details>
+        </li>`).join("")}
+      </ul>
+    `;
+    reviewsSection.after(section);
+    import("./astro/Layout.astro_astro_type_script_index_1_lang.C7SCjpzP.js")
+      .then((layout) => layout.j())
+      .catch((error) => console.error("Neo: FAQ card edges failed to mount.", error));
+  }
 });
