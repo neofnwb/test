@@ -45,8 +45,11 @@
   flex: 1;
   min-width: 0;
   padding: 0 clamp(12px, .9vw, 18px);
+  font-family: var(--font-inter);
+  font-weight: 500;
+  font-size: clamp(13px, .85vw, 16px);
+  line-height: 1.2;
   color: #fff;
-  font: inherit;
 }
 
 .nav-download-go {
