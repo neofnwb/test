@@ -90,12 +90,12 @@ document.addEventListener("DOMContentLoaded", () => {
     lobbies.insertAdjacentHTML("afterend", `
       <section class="chapter" aria-labelledby="og-multiplayer-title">
         <figure class="float" data-float data-par="-46">
-          <img src="./assets/story/og_landscape.jpeg" alt="A classic Fortnite landscape from Project Neo" width="1920" height="1080" loading="lazy" decoding="async">
+          <img src="./assets/story/og_landscape.webp" alt="A classic Fortnite landscape from Project Neo" width="1920" height="1080" loading="lazy" decoding="async">
         </figure>
         <div class="chapter-copy" data-in-group data-par="30">
           <h2 class="chapter-title" id="og-multiplayer-title">OG Fortnite multiplayer</h2>
-          <p>Drop back into classic Fortnite with the Project Neo launcher. Choose a season and join the action with friends.</p>
-          <p>Revisit the maps, weapons, and familiar multiplayer feel of Fortnite's early seasons.</p>
+          <p>Choose from classic Chapter 1 seasons and return to the maps, weapons, and gameplay that made Fortnite memorable. Drop in solo or squad up with friends for the familiar OG multiplayer experience.</p>
+          <p>Find full lobbies and get straight into a match, with anti-cheat helping keep the action fair for everyone. Pick your season in the Project Neo launcher and jump back into the island.</p>
           <a class="ink-link" href="https://projectneofn.dev/download" target="_blank" rel="noopener noreferrer">Download Project Neo</a>
         </div>
       </section>
@@ -117,16 +117,24 @@ document.addEventListener("DOMContentLoaded", () => {
     section.setAttribute("aria-labelledby", "faq-title");
     section.innerHTML = `
       <h2 class="chapter-title creators-title" id="faq-title">Frequently Asked Questions</h2>
-      <ul class="faq-list">${faqs.map(([question, answer]) => `
+      <ul class="faq-list">${faqs.map(([question, answer], index) => `
         <li class="creator faq-item" data-edge data-edge-inset="0" data-edge-stroke="2" data-edge-glow="0.25">
-          <details class="faq-card">
-            <summary class="faq-question"><span>${question}</span><span class="faq-toggle" aria-hidden="true">+</span></summary>
-            <p class="faq-answer">${answer}</p>
+          <div class="faq-card">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-${index + 1}"><span>${question}</span><span class="faq-toggle" aria-hidden="true">+</span></button>
+            <p class="faq-answer" id="faq-answer-${index + 1}" hidden>${answer}</p>
             <span class="creator-glass neo-glass" aria-hidden="true"></span>
-          </details>
+          </div>
         </li>`).join("")}
       </ul>
     `;
+    section.addEventListener("click", (event) => {
+      const button = event.target.closest(".faq-question");
+      if (!button) return;
+      const expanded = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!expanded));
+      const answer = document.getElementById(button.getAttribute("aria-controls"));
+      if (answer) answer.hidden = expanded;
+    });
     reviewsSection.after(section);
     import("./astro/Layout.astro_astro_type_script_index_1_lang.C7SCjpzP.js")
       .then((layout) => layout.j())
