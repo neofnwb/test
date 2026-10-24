@@ -19,8 +19,8 @@
 
 .nav[data-nav] .nav-group-end .nav-download.finder {
   display: flex !important;
-  width: min(440px, 25vw) !important;
-  min-width: 240px !important;
+  width: max-content !important;
+  min-width: 0 !important;
   height: var(--nav-control) !important;
   min-height: 0 !important;
   padding: 0 !important;
@@ -42,7 +42,7 @@
 .nav-download-label {
   position: relative;
   z-index: 1;
-  flex: 1;
+  flex: 0 0 auto;
   min-width: 0;
   padding: 0 clamp(12px, .9vw, 18px);
   font-family: var(--font-inter);
@@ -80,11 +80,62 @@
   mask: url("./assets/icons/windows.svg") center / contain no-repeat;
 }
 
+.creators .creator {
+  min-height: 184px;
+}
+
+.creators .creator-body {
+  min-height: 184px;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
+  justify-items: start;
+  align-items: start;
+  gap: 12px 10px;
+  padding: 20px 18px 42px;
+}
+
+.creators .creator-name {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  font-size: clamp(16px, 1.1vw, 19px);
+}
+
+.creators .creator-face-review {
+  position: relative;
+  grid-column: 2;
+  grid-row: 1;
+  width: 38px;
+  min-width: 38px;
+  background: #111318;
+}
+
+.creators .creator-face-review .creator-initial {
+  font-size: 15px;
+}
+
+.creators .creator-review {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  align-self: start;
+  margin: 0;
+  font-family: var(--font-inter);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.45;
+  color: #ffffffd6;
+  text-align: left;
+}
+
+.creators .creator-rating {
+  font-size: 10px;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
 @media (max-width: 860px) {
   .nav[data-nav] .nav-group-end .nav-download.finder {
     grid-area: account;
     justify-self: end;
-    width: min(440px, 48vw);
-    min-width: 0;
   }
 }
