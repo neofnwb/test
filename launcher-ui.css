@@ -1,0 +1,83 @@
+.stage .stage-backdrop .stage-word {
+  background: linear-gradient(180deg, #fff 0%, #f4f6f8 56%, #d8dde3 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 28px rgba(255, 255, 255, .18);
+}
+
+.nav-group-end .finder,
+.nav-group-end .profile {
+  display: none !important;
+}
+
+.nav-download {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: min(440px, 25vw);
+  min-width: 240px;
+  height: var(--nav-control);
+  padding: 0 0 0 clamp(12px, .9vw, 18px);
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, .85);
+  border-radius: clamp(12px, .9vw, 17px);
+  background: #969eb224;
+  color: #ffffffdb;
+  font-family: var(--font-inter);
+  font-size: clamp(13px, .85vw, 16px);
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: border-color .2s ease, background .2s ease;
+}
+
+.nav-download:hover,
+.nav-download:focus-visible {
+  border-color: #fff;
+  background: #969eb23b;
+}
+
+.nav-download-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: none;
+  height: 100%;
+  aspect-ratio: 1;
+  border-left: 1.5px solid #ffffff9c;
+}
+
+.nav-download-icon img {
+  width: 44%;
+  height: 44%;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+.isle-code-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .55em;
+}
+
+.isle-code-label::before {
+  content: "";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: url("./assets/icons/windows.svg") center / contain no-repeat;
+  mask: url("./assets/icons/windows.svg") center / contain no-repeat;
+}
+
+@media (max-width: 860px) {
+  .nav-download {
+    grid-area: account;
+    justify-self: end;
+    width: min(440px, 48vw);
+    min-width: 0;
+  }
+}
