@@ -4,6 +4,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 28px rgba(255, 255, 255, .18);
+  font-size: min(11vw, 27vh);
 }
 
 .nav-group-end .finder,
@@ -12,44 +13,25 @@
 }
 
 .nav-download {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: min(440px, 25vw);
-  min-width: 240px;
-  height: var(--nav-control);
-  padding: 0 0 0 clamp(12px, .9vw, 18px);
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, .85);
-  border-radius: clamp(12px, .9vw, 17px);
-  background: #969eb224;
-  color: #ffffffdb;
-  font-family: var(--font-inter);
-  font-size: clamp(13px, .85vw, 16px);
-  font-weight: 500;
-  line-height: 1.2;
+  cursor: pointer;
   text-decoration: none;
-  transition: border-color .2s ease, background .2s ease;
 }
 
-.nav-download:hover,
-.nav-download:focus-visible {
-  border-color: #fff;
-  background: #969eb23b;
-}
-
-.nav-download-icon {
+.nav-download-label {
   position: relative;
-  display: grid;
-  place-items: center;
-  flex: none;
-  height: 100%;
-  aspect-ratio: 1;
-  border-left: 1.5px solid #ffffff9c;
+  z-index: 1;
+  flex: 1;
+  min-width: 0;
+  padding: 0 clamp(12px, .9vw, 18px);
+  color: #fff;
+  font: inherit;
 }
 
-.nav-download-icon img {
+.nav-download-go {
+  cursor: pointer;
+}
+
+.nav-download-go img {
   width: 44%;
   height: 44%;
   object-fit: contain;
@@ -74,7 +56,7 @@
 }
 
 @media (max-width: 860px) {
-  .nav-download {
+  .nav .nav-download {
     grid-area: account;
     justify-self: end;
     width: min(440px, 48vw);
